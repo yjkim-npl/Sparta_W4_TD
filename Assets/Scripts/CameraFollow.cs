@@ -2,12 +2,14 @@
 
 public class CameraFollow : MonoBehaviour
 {
-    [SerializeField] private GameObject player;
 
+    private void Start()
+    {
+    }
 
     private void LateUpdate()
     {
-        var pos = player.transform.position;
+        var pos = MainSceneGM.player.transform.position;
         pos.z = -10;
         transform.position = pos;
     }

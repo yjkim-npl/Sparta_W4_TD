@@ -9,7 +9,6 @@ public class AnimCtrl : MonoBehaviour
 
     protected virtual void Awake()
     {
-        Debug.Log("PlayerAnim Awake");
         anim = GetComponent<Animator>();
         ctrl = GetComponent<MainCtrl>();
     }

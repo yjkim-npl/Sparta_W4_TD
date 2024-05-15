@@ -9,7 +9,7 @@ public class AnimCtrl : MonoBehaviour
 
     protected virtual void Awake()
     {
-        anim = GetComponent<Animator>();
-        ctrl = GetComponent<MainCtrl>();
+        anim = GetComponentInChildren<Animator>();
+        ctrl = GetComponentInChildren<MainCtrl>();
     }
 }

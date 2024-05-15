@@ -1,21 +1,26 @@
-using System.IO;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance;
-    [SerializeField] public GameObject player1Chara;
-    [SerializeField] public GameObject player2Chara;
-    public string playerName { get; set; }
-    public int playerChara { get; set; }
+    public static GameManager Instance;
+    [SerializeField] private Camera cam;
+    public GameObject[] charaPerfabs;
+    private GameObject player;
     private void Awake()
     {
-        playerName = "";
-        if(instance == null)
-            instance = this;
-        DontDestroyOnLoad(gameObject);
+        if (Instance == null)
+            Instance = this;
+        else
+            return;
+        //        Resources.Load("PlayerM");
+        player = Instantiate(charaPerfabs[DataManager.instance.GetCharaNum()]);
+        cam.GetComponent<CameraFollow>().SetPlayer(player);
     }
-    private void Start()
+    public GameObject GetPlayerChara(int num)
     {
+        return charaPerfabs[num];
     }
+    public GameObject GetPlayer() { return player; }
 }
